@@ -1,6 +1,6 @@
 # RSS Feeds
 
-Master list of RSS feeds in NetNewsWire → **Jordan's RSS (iCloud)**.
+Master list of the RSS feeds I follow in NetNewsWire.
 Last updated: 2026-11-25
 
 ## Microsoft Tech Community
@@ -37,6 +37,7 @@ Last updated: 2026-11-25
 | 2Pint Software | https://2pintsoftware.com/news/rss |
 | Patch My PC – Blog | https://patchmypc.com/category/blog/feed/ |
 | Recast Software | https://www.recastsoftware.com/feed/ |
+| PSAppDeployToolkit Blog | https://psappdeploytoolkit.com/blog/rss.xml |
 
 > Patch My PC alt: https://patchmypc.com/feed/ = blog **plus** Publisher release notes.
 
@@ -44,10 +45,12 @@ Last updated: 2026-11-25
 
 | Feed | URL |
 |---|---|
+| Born's Tech and Windows World (Günter Born) | https://borncity.com/win/feed/ |
 | call4cloud (Rudy Ooms) | https://call4cloud.nl/feed/ |
 | Donnie's Azure, Automation, Monitoring & Mgmt | http://draith.azurewebsites.net/?feed=rss2 |
 | FoxDeploy (Stephen Owen) | https://www.foxdeploy.com/feed.xml |
 | Jeffrey Snover's blog | https://www.jsnover.com/blog/feed/ |
+| Oliver Kieselbach | https://oliverkieselbach.com/feed/ |
 | Out of Office Hours (Michael Niehaus) | https://oofhours.com/feed/ |
 | text/plain (Eric Lawrence) | https://textslashplain.com/feed/ |
 | Windows 365 Community | https://w365community.com/feed |
@@ -73,18 +76,24 @@ Last updated: 2026-11-25
 
 ### Candidates not added
 - HTMD / Anoop C Nair – https://www.anoopcnair.com/feed/ (high-volume; add if wanted)
+- Jamf Blog – https://www.jamf.com/blog/rss/ (mix of product, security research, marketing)
+- MSRC Security Update Guide – https://api.msrc.microsoft.com/update-guide/rss (one item per CVE; too noisy)
+- Microsoft Entra Blog – Tech Community board feed URL not yet confirmed
 - Intune What's New docs commits (MicrosoftDocs/memdocs .atom) – NetNewsWire couldn't find a feed
 - GetRubix (Steve Weiner), nicolonsky.ch, powers-hell.com, osdcloud.com – no working feed found
+
+## macOS / Apple (added 2026-11-25)
+
+| Feed | Author | Focus | URL |
+|---|---|---|---|
+| MacAdmins.news | Armin Briegel et al. | Weekly Mac admin news digest | https://www.macadmins.news/feed |
+| Der Flounder | Rich Trouton | Jamf Pro, macOS management | https://derflounder.wordpress.com/feed/ |
+| Scripting OS X | Armin Briegel | Apple platform update roundups, scripting | https://scriptingosx.com/feed/ |
+| Mr. Macintosh | Mr. Macintosh | macOS release / update tracking | https://mrmacintosh.com/feed/ |
+| Jamf Concepts | Jamf | Jamf-built tools and utilities | https://concepts.jamf.com/feed.xml |
 
 ## Change Tracking
 
 | Feed | URL |
 |---|---|
 | intune-change-tracking commits (pl4nty) | https://github.com/pl4nty/intune-change-tracking/commits/main/DCv2.atom |
-
-## On My Mac (local, not synced)
-
-| Feed | URL |
-|---|---|
-| Michael Tsai | https://mjtsai.com/blog/feed/ |
-| Six Colors | https://sixcolors.com/feed/ |
