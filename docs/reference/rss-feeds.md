@@ -52,6 +52,7 @@ Last updated: 2026-11-25
 | Jeffrey Snover's blog | https://www.jsnover.com/blog/feed/ |
 | Oliver Kieselbach | https://oliverkieselbach.com/feed/ |
 | Out of Office Hours (Michael Niehaus) | https://oofhours.com/feed/ |
+| sbd.org.uk (Paul) – Entra, Conditional Access, Intune, M365 architecture | https://sbd.org.uk/feed.xml |
 | text/plain (Eric Lawrence) | https://textslashplain.com/feed/ |
 | Windows 365 Community | https://w365community.com/feed |
 
