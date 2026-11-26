@@ -40,7 +40,7 @@ packaged versions are too old.
 
 ```bash
 pipx install --include-deps ansible-core
-pipx inject ansible-core ansible-lint
+pipx inject --include-apps ansible-core ansible-lint
 pipx install pre-commit
 ```
 
@@ -53,6 +53,8 @@ What those lines do:
 - **`pipx inject ansible-core ansible-lint`** installs ansible-lint *into the same virtualenv*. ansible-lint
   imports Ansible's own libraries, so it has to see the exact version you run. In a separate venv it could
   pull a different ansible-core and lint against the wrong one.
+- **`--include-apps`** puts the injected package's commands (`ansible-lint`) on your PATH. Without it
+  the package is installed but the command isn't found.
 - **`pipx install pre-commit`** puts pre-commit in its own venv. It's per-user and works in every repo.
 
 **`ansible-core` or `ansible`?**
@@ -66,7 +68,7 @@ What those lines do:
 Prefer `ansible-core` plus a `requirements.yml` per repo: the collection versions are then pinned in the
 repo instead of depending on what happens to be installed on your workstation. If you already installed
 `ansible`, that works too; still run `ansible-galaxy collection install -r requirements.yml` in each repo.
-Either way, use the same name in `pipx inject` as in `pipx install`.
+Either way, use the same name in `pipx inject` as in `pipx install` (`pipx list --short` shows which you have).
 
 ## 3. OpenTofu
 
@@ -154,6 +156,7 @@ shellcheck --version | head -2
 | Symptom | Fix |
 |---|---|
 | `ansible: command not found` after pipx install | `pipx ensurepath`, then open a new shell |
+| `ansible-lint: command not found` but `pipx list` shows it injected | Injected without `--include-apps`: `pipx inject --include-apps --force ansible-core ansible-lint` (or `ansible`) |
 | `error: externally-managed-environment` | You ran `pip install`; use `pipx` (Debian protects the system Python) |
 | `ansible-lint` complains about a missing collection | `ansible-galaxy collection install -r requirements.yml` in the repo |
 | `[WARNING]: Ansible is being run in a world writable directory ... ignoring ansible.cfg` | The repo is under `/mnt/c`; move it into `~` |
