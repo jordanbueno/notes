@@ -6,6 +6,9 @@ Personal knowledge base: guides, reference lists, and documentation, mostly endp
 
 ### Guides
 - [SSH keys in PowerShell 7](docs/guides/ssh-keys-pwsh.md): create, import, agent, servers, config, troubleshooting
+- [WSL2 with Debian](docs/guides/wsl2-debian-setup.md): install, systemd, filesystem layout, infra tooling
+- [Bitwarden SSH agent in WSL](docs/guides/bitwarden-ssh-agent-wsl.md): vault-held SSH keys from Windows and WSL via `npiperelay` + `socat`
+- [Multiple GitHub accounts over SSH](docs/guides/git-multiple-github-accounts-ssh.md): per-account auth and commit signing, picked by folder
 
 ### Reference
 - [RSS feeds](docs/reference/rss-feeds.md): master feed list for NetNewsWire
