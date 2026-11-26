@@ -266,6 +266,8 @@ ssh-add -D                     # all keys
 
 > **Windows difference:** unlike Linux and macOS, the Windows agent **remembers added keys across reboots** (stored securely in your user profile). You add each key once, not every session.
 
+> **Using a password manager as the agent instead?** Bitwarden (and 1Password) can hold your keys in the vault and serve the same agent pipe, but only one program can own it, so the Windows `ssh-agent` service must be **disabled**. See [Bitwarden SSH agent in WSL](bitwarden-ssh-agent-wsl.md), which also covers using those keys from WSL.
+
 ---
 
 ## 7. Put your public key on a server
