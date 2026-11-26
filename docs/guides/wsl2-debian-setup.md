@@ -78,28 +78,27 @@ mkdir -p ~/src/personal ~/src/work
 
 From Windows, the Linux files are under `\\wsl$\Debian\home\<you>` in Explorer.
 
+Keep git from converting line endings inside WSL (Linux tools expect LF; Windows git's `autocrlf=true`
+habit doesn't belong here):
+
+```bash
+git config --global core.autocrlf input
+```
+
+Ansible also refuses to read `ansible.cfg` from a world-writable directory, which every `/mnt/c` path is.
+That's one more reason to keep repos in `~`.
+
 ## 5. Editor
 
 Install VS Code on Windows plus the **WSL** extension, then run `code .` from inside a WSL folder. The editor
 runs on Windows and the extensions, terminal and git run in Linux.
 
-## 6. Common tools
+## 6. Infra tooling
 
-```bash
-# Ansible + lint
-pipx install --include-deps ansible-core
-pipx inject ansible-core ansible-lint
-pipx install pre-commit
+Ansible, OpenTofu, SOPS, age, pre-commit and the linters have their own guide, covering what each one is and
+how to install, check and update it: [Infra toolchain on Debian / WSL](infra-toolchain.md).
 
-# age (for SOPS)
-sudo apt install -y age
-```
-
-OpenTofu and SOPS aren't in Debian's repos:
-
-- OpenTofu: follow the official Debian/apt instructions at <https://opentofu.org/docs/intro/install/deb/>.
-- SOPS: download the `linux.amd64` binary from <https://github.com/getsops/sops/releases> to
-  `/usr/local/bin/sops` and `chmod +x` it.
+New to these tools? [Getting started with config as code](config-as-code-intro.md) is a hands-on tutorial.
 
 ## Handy commands (PowerShell)
 

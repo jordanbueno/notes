@@ -20,6 +20,7 @@ it to sign with the key matching the `.pub` file.
 - One SSH key item per account in your vault, named clearly: `GitHub – personal`, `GitHub – work`.
 - A key can be both an **Authentication** and a **Signing** key on GitHub, so one key per account covers
   both. A key can only be an auth key on **one** GitHub account, though.
+- Prefer separate auth and signing keys? See [Separate auth and signing keys](#separate-auth-and-signing-keys).
 - Save each public key in `~/.ssh`. They aren't secret:
 
 ```bash
@@ -124,16 +125,51 @@ echo "you@example.com $(cat ~/.ssh/github-personal.pub)" >> ~/.ssh/allowed_signe
 echo "you@work.example $(cat ~/.ssh/github-work.pub)"    >> ~/.ssh/allowed_signers
 ```
 
+### Separate auth and signing keys
+
+Some people keep a dedicated signing key per account, so a leaked or rotated auth key doesn't touch commit
+history (and vice versa). The SSH side doesn't change; only git's signing settings do.
+
+1. Make a second SSH key item in the vault (`GitHub signing – personal`) and save its public half:
+
+   ```bash
+   nano ~/.ssh/github-personal-signing.pub
+   chmod 644 ~/.ssh/github-personal-signing.pub
+   ```
+
+2. Keep `IdentityFile` in `~/.ssh/config` on the **auth** key (`github-personal.pub`).
+3. Point git at the **signing** key in `~/.gitconfig-personal`:
+
+   ```ini
+   [user]
+     signingkey = ~/.ssh/github-personal-signing.pub
+   ```
+
+4. Put the **signing** key (not the auth key) in `allowed_signers`:
+
+   ```bash
+   echo "you@example.com $(cat ~/.ssh/github-personal-signing.pub)" >> ~/.ssh/allowed_signers
+   ```
+
+5. On GitHub, add the auth key as **Authentication Key** only and the signing key as **Signing Key** only.
+
+With Bitwarden approvals on, `git push` prompts for the auth key item and `git commit` for the signing key
+item. If a commit prompts for the auth key, `signingkey` points at the wrong file.
+
 ## 5. Check
 
 ```bash
 cd ~/src/personal/some-repo
+ssh -T github-personal       # Hi <personal-user>!
 git config user.email        # personal email
-git config user.signingkey   # github-personal.pub
+git config user.signingkey   # github-personal.pub (or the -signing.pub)
+git config gpg.format        # ssh
 git commit --allow-empty -m "test signing"
 git log --show-signature -1  # Good "git" signature for you@example.com
-git push                     # goes through github-personal
+git reset --hard HEAD~1      # throw the test commit away
 ```
+
+If those `git config` lines print nothing, the include isn't applying. See the last troubleshooting row.
 
 ## Troubleshooting
 
@@ -144,3 +180,6 @@ git push                     # goes through github-personal
 | `error: Load key ... invalid format` when signing | `signingkey` path wrong or the file has a stray line break. One line, `ssh-ed25519 AAAA... comment` |
 | Commits show **Unverified** on GitHub | Key not added as a **Signing Key**, or commit email not verified on that account |
 | `includeIf` not applying | Path needs the trailing slash, and the repo must be under it: `git config --show-origin user.email` |
+| `git config user.email` prints nothing | No global config yet, the repo isn't under an `includeIf` folder, or you're outside a repo (`gitdir:` only matches inside one). Move the repo or fix the path |
+| Commit prompts for the **auth** key item | `signingkey` points at the auth `.pub`; set it to the signing key (see [Separate auth and signing keys](#separate-auth-and-signing-keys)) |
+| `Good signature` locally but **Unverified** on GitHub, or the reverse | `allowed_signers` and the GitHub Signing Key are different keys; both should be the signing key |
