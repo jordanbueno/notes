@@ -22,7 +22,6 @@ Last updated: 2026-11-25
 
 | Feed | URL |
 |---|---|
-| Microsoft 365 Roadmap | https://www.microsoft.com/en-us/microsoft-365/RoadmapFeatureRSS |
 | Microsoft Edge Blog | https://blogs.windows.com/msedgedev/feed/ |
 | PowerShell Community | https://devblogs.microsoft.com/powershell-community/feed/ |
 | PowerShell Team | https://devblogs.microsoft.com/powershell/feed/ |
@@ -92,6 +91,14 @@ Last updated: 2026-11-25
 | Scripting OS X | Armin Briegel | Apple platform update roundups, scripting | https://scriptingosx.com/feed/ |
 | Mr. Macintosh | Mr. Macintosh | macOS release / update tracking | https://mrmacintosh.com/feed/ |
 | Jamf Concepts | Jamf | Jamf-built tools and utilities | https://concepts.jamf.com/feed.xml |
+
+## Silenced / Turned Off
+
+Feeds removed from NetNewsWire. Kept here for reference.
+
+| Feed | URL | Status | Reason |
+|---|---|---|---|
+| Microsoft 365 Roadmap | https://www.microsoft.com/en-us/microsoft-365/RoadmapFeatureRSS | Silenced / turned off | Too many posts (1,100+ unread; every M365/Dynamics roadmap item) |
 
 ## Change Tracking
 
