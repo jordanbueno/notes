@@ -5,7 +5,7 @@ Personal knowledge base: guides, reference lists, and documentation, mostly endp
 ## Index
 
 ### Guides
-_None yet._ See [`docs/guides/`](docs/guides/).
+- [SSH keys in PowerShell 7](docs/guides/ssh-keys-pwsh.md): create, import, agent, servers, config, troubleshooting
 
 ### Reference
 - [RSS feeds](docs/reference/rss-feeds.md): master feed list for NetNewsWire
